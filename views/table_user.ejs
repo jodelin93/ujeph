@@ -1,0 +1,87 @@
+<%- include("includes/head")%>
+</head>
+
+<body>
+ 
+    <%- include("includes/left_menu")%>
+
+    <div class="all-content-wrapper">
+        <%- include("includes/logo_top") %> 
+        <div class="header-advance-area">
+            <%- include("includes/menu_top") %> 
+            <!-- Mobile Menu start -->
+           <%- include("includes/mobile_menu") %> 
+            <!-- Mobile Menu end -->
+
+                 <!-- Static Table Start -->
+        <div class="data-table-area mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sparkline13-list">
+                            <div class="sparkline13-hd">
+                                <div class="main-sparkline13-hd">
+                                    <h1>Tables  <span class="table-project-n">Des</span> Utilisateur</h1>
+                                </div>
+                            </div>
+                            <div class="sparkline13-graph">
+                                <div class="datatable-dashv1-list custom-datatable-overright">
+                                    <div id="toolbar">
+                                        <select class="form-control dt-tb">
+											<option value="">Export Basic</option>
+											<option value="all">Export All</option>
+											<option value="selected">Export Selected</option>
+										</select>
+                                    </div>
+                                    <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+                                        data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                        <thead>
+                                            <tr>
+                                                <th data-field="state" data-checkbox="true"></th>
+                                                <th >ID</th>
+                                                <th >Nom_user</th>
+                                                <th >Prenom_user</th>
+                                                <th >username</th>
+                                                <th >Fonction</th>
+                                                <th >Droit</th>
+                                                <th>Statut</th>
+                                               
+                                                <th data-field="action">Action</th>
+                                            </tr>
+                                        </thead>
+                                        
+                                        <tbody>
+                                            <% user.forEach(element =>{ %> 
+                                            <tr>
+                                                <td></td>
+                                                <td> <%= element.id %> </td>
+                                                <td> <%= element.nom_user %></td>
+                                                <td> <%= element.prenom_user %></td>
+                                                <td> <%= element.username %></td>
+                                                <td> <%= element.fonction %></span>
+                                                </td>
+                                                <td> <%= element.droit %></td>
+                                                <td> <%= element.statut %></td>
+                                                <td> <%= element.fonction %></td>
+                                              
+                                            </tr>
+                                            <% }) %> 
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Static Table End -->
+        </div>
+    
+        <%- include("includes/footer") %> 
+    </div>
+
+  <%- include("includes/scripts") %> 
+</body>
+
+</html>

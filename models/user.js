@@ -38,13 +38,9 @@ droit:{
 
 },
 statut:{
-type:DataTypes.TINYINT,
+type:DataTypes.STRING,
 allowNull:false,
 defaultValue:0
-},
-save_date:{
-    type:DataTypes.DATE,
-    defaultValue:DataTypes.NOW
 }
 
 })
