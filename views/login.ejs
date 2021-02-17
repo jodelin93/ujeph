@@ -1,0 +1,45 @@
+<%- include("includes/head")%>
+</head>
+
+<body>
+ 
+    
+
+    <div class="error-pagewrap">
+		<div class="error-page-int">
+			<div class="text-center m-b-md custom-login">
+				<h3>Entrer vos infomations personelles</h3>
+				<p>si vous n'avez pas de compte contactez l'administrateur</p>
+			</div>
+			<div class="content-error">
+				<div class="hpanel">
+                    <div class="panel-body">
+                        <form action="/" id="loginForm" method="POST">
+                            <div class="form-group">
+                                <label class="control-label" for="username">Username</label>
+                                <input type="text" placeholder="nom d'utilisateur" title="Please enter you username" required="" value="" name="username"  class="form-control">
+                                <span class="help-block small">Your unique username to app</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Password</label>
+                                <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password" id="password" class="form-control">
+                                <span class="help-block small">Yur strong password</span>
+                            </div>
+                           
+                            <button class="btn btn-success btn-block loginbtn">Login</button>
+                           
+                        </form>
+                    </div>
+                </div>
+			</div>
+			
+		</div>   
+    </div>
+    
+        <%- include("includes/footer") %> 
+    </div>
+
+  <%- include("includes/scripts") %> 
+</body>
+
+</html>

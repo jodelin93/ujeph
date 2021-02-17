@@ -18,7 +18,24 @@ app.use("/user/",user);
 
 
 app.get("/",async (req,res,next)=>{
-    res.render("index")
+   
+    res.render("login")
+});
+app.post("/",async (req,res,next)=>{
+  
+    const user=await User.findOne({
+        where: {
+          "username": req.body.username,
+          "password":req.body.password
+        }
+      });
+     
+      if(user){
+        res.render("index")  
+      }else{
+        res.render("login")
+      }
+    
 });
 
 
