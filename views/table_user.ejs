@@ -38,7 +38,7 @@
                                         <thead>
                                             <tr>
                                                 <th data-field="state" data-checkbox="true"></th>
-                                                <th >ID</th>
+                                                
                                                 <th >Nom_user</th>
                                                 <th >Prenom_user</th>
                                                 <th >username</th>
@@ -54,7 +54,7 @@
                                             <% user.forEach(element =>{ %> 
                                             <tr>
                                                 <td></td>
-                                                <td> <%= element.id %> </td>
+                                               
                                                 <td> <%= element.nom_user %></td>
                                                 <td> <%= element.prenom_user %></td>
                                                 <td> <%= element.username %></td>
@@ -62,7 +62,7 @@
                                                 </td>
                                                 <td> <%= element.droit %></td>
                                                 <td> <%= element.statut %></td>
-                                                <td> <%= element.fonction %></td>
+                                                <td><a href="/user/edit_user/<%= element.username %>"><i class="fa fa-edit"></i></a> <a href="/user/table_users/<%= element.username %>"><i class="fa fa-trash"></i></a></td>
                                               
                                             </tr>
                                             <% }) %> 
