@@ -11,15 +11,18 @@ app.set("view engine","ejs");
 
 //models
 const User = require("./models/user")
+const Faculte = require("./models/faculte")
 
 //routes
 const user= require("./routes/users")
+const faculte= require("./routes/faculte")
 app.use("/user/",user);
+app.use("/faculte/",faculte);
 
 
 app.get("/",async (req,res,next)=>{
    
-    res.render("login")
+    res.render("utilisateurs/login")
 });
 app.post("/",async (req,res,next)=>{
   
@@ -38,6 +41,9 @@ app.post("/",async (req,res,next)=>{
     
 });
 
+app.get("/index",(req,res,next)=>{
+  res.render("index");
+})
 
    connection.sync()
    app.listen(PORT,()=>{

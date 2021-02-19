@@ -1,6 +1,6 @@
 const User= require("../models/user")
 const getRegisterPage=(req,res,next)=>{
-    res.render("register");
+    res.render("utilisateurs/register");
 }
 
 const postUser = async (req,res,next)=>{
@@ -28,7 +28,7 @@ const postUser = async (req,res,next)=>{
 const getUsers = async (req,res,next)=>{
     const user= await User.findAll();
    
-    res.render("table_user",{user});
+    res.render("utilisateurs/table",{user});
 }
 
 const delUser = async (req,res,next)=>{
@@ -49,7 +49,7 @@ const editUser = async (req,res,next)=>{
         }
       });
 
-    res.render("edit_user",{user});
+    res.render("utilisateurs/edit_user",{user});
 }
 
 const updatetUser=async  (req,res,next)=>{

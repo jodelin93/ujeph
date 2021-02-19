@@ -1,4 +1,12 @@
 <%- include("includes/head")%>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+
+
 </head>
 
 <body>
@@ -14,74 +22,91 @@
             <!-- Mobile Menu end -->
 
                  <!-- Static Table Start -->
-        <div class="data-table-area mg-b-15">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="sparkline13-list">
-                            <div class="sparkline13-hd">
-                                <div class="main-sparkline13-hd">
-                                    <h1>Tables  <span class="table-project-n">Des</span> Utilisateur</h1>
-                                </div>
-                            </div>
-                            <div class="sparkline13-graph">
-                                <div class="datatable-dashv1-list custom-datatable-overright">
-                                    <div id="toolbar">
-                                        <select class="form-control dt-tb">
-											<option value="">Export Basic</option>
-											<option value="all">Export All</option>
-											<option value="selected">Export Selected</option>
-										</select>
-                                    </div>
-                                    <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
-                                        data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
-                                        <thead>
-                                            <tr>
-                                                <th data-field="state" data-checkbox="true"></th>
-                                                
-                                                <th >Nom_user</th>
-                                                <th >Prenom_user</th>
-                                                <th >username</th>
-                                                <th >Fonction</th>
-                                                <th >Droit</th>
-                                                <th>Statut</th>
-                                               
-                                                <th data-field="action">Action</th>
-                                            </tr>
-                                        </thead>
-                                        
-                                        <tbody>
-                                            <% user.forEach(element =>{ %> 
-                                            <tr>
-                                                <td></td>
-                                               
-                                                <td> <%= element.nom_user %></td>
-                                                <td> <%= element.prenom_user %></td>
-                                                <td> <%= element.username %></td>
-                                                <td> <%= element.fonction %></span>
-                                                </td>
-                                                <td> <%= element.droit %></td>
-                                                <td> <%= element.statut %></td>
-                                                <td><a href="/user/edit_user/<%= element.username %>"><i class="fa fa-edit"></i></a> <a href="/user/table_users/<%= element.username %>"><i class="fa fa-trash"></i></a></td>
-                                              
-                                            </tr>
-                                            <% }) %> 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                 <table id="example" class="display" style="width:100%" data-show-columns="true">
+                    <thead>
+                        <tr>
+                            <th>Nom_user</th>
+                            <th>Prenom_user</th>
+                            <th>username</th>
+                            <th>Fonction</th>
+                            <th>Droit</th>
+                            <th>Statut</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% user.forEach(element =>{ %> 
+                        <tr>
+                            <td><%= element.nom_user %></td>
+                            <td><%= element.prenom_user %></td>
+                            <td><%= element.username %></td>
+                            <td> <%= element.fonction %></td>
+                            <td><%= element.droit %></td>
+                            <td> <%= element.statut %></td>
+                            <td><a href="/user/edit_user/<%= element.username %>"><i class="fa fa-edit"></i></a> <a href="/user/table_users/<%= element.username %>"><i class="fa fa-trash"></i></a></td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Nom_user</th>
+                            <th>Prenom_user</th>
+                            <th>username</th>
+                            <th>Fonction</th>
+                            <th>Droit</th>
+                            <th>Statut</th>
+                        </tr>
+                    </tfoot>
+                </table>
         <!-- Static Table End -->
         </div>
+
     
         <%- include("includes/footer") %> 
     </div>
 
+    
+
   <%- include("includes/scripts") %> 
+</script>
+<script>
+    $(document).ready(function() {
+  var printCounter = 0;
+
+  // Append a caption to the table before the DataTables initialisation
+  $('#example').append('<caption style="caption-side: bottom">A fictional company\'s staff table.</caption>');
+
+  $('#example').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+          'copy',
+          {
+              extend: 'excel',
+              messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+          },
+          {
+              extend: 'pdf',
+              messageBottom: null
+          },
+          {
+              extend: 'print',
+       
+              messageBottom: null
+          }
+      ]
+  } );
+} );
+ </script>
+
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
+
+  
 </body>
 
 </html>

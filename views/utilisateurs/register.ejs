@@ -1,49 +1,56 @@
-<%- include("includes/head")%>
+<%- include("../includes/head")%>
 </head>
 
 <body>
  
-    <%- include("includes/left_menu")%>
+    <%- include("../includes/left_menu")%>
 
     <div class="all-content-wrapper">
-        <%- include("includes/logo_top") %> 
+        <%- include("../includes/logo_top") %> 
         <div class="header-advance-area">
-            <%- include("includes/menu_top") %> 
+            <%- include("../includes/menu_top") %> 
             <!-- Mobile Menu start -->
-           <%- include("includes/mobile_menu") %> 
+           <%- include("../includes/mobile_menu") %> 
             <!-- Mobile Menu end -->
 
             <div class="error-pagewrap">
                 <div class="error-page-int">
                     <div class="text-center custom-login">
-                        <h3>Modifier utilisateur </h3>
+                        <h3>Enregistrement d'utilisateur</h3>
                         <p>veuillez a bien remplir les champs</p>
                     </div>
                     <div class="content-error">
                         <div class="hpanel">
                             <div class="panel-body">
-                                <form action="/user/updatetUser/<%= user.username %>"  method="POST">
+                                <form action="/user/postUser"  method="POST">
                                     <div class="row">
                                         <div class="form-group col-lg-12">
                                             <label>Nom</label>
-                                            <input class="form-control" name="nom_user" value="<%= user.nom_user %> " required>
+                                            <input class="form-control" name="nom_user" required>
                                         </div>
                                         <div class="form-group col-lg-12">
                                             <label>Prenom</label>
-                                            <input class="form-control" name="prenom_user" value="<%= user.prenom_user %> " required>
+                                            <input class="form-control" name="prenom_user" required>
                                         </div>
                                         <div class="form-group col-lg-12">
                                             <label>Username</label>
-                                            <input class="form-control" name="username" value="<%= user.username %> " required>
+                                            <input class="form-control" name="username" required>
                                         </div>
-                                        
+                                        <div class="form-group col-lg-6">
+                                            <label>Password</label>
+                                            <input type="password" class="form-control" name=password required>
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>Repeat Password</label>
+                                            <input type="password" class="form-control" name="password_confirm" required>
+                                        </div>
                                         <div class="form-group col-lg-4">
                                             <label>Fonction</label>
-                                            <input class="form-control" name="fonction"  value="<%= user.fonction %> " required>
+                                            <input class="form-control" name="fonction" required>
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label>Droit</label>
-                                            <select class="form-control" name="droit" value="<%= user.droit %> " required>
+                                            <select class="form-control" name="droit" required>
                                                 <option>Administrateur</option>
                                                 <option>Utilisateur</option>
                                                 
@@ -51,7 +58,7 @@
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label>Statut</label>
-                                            <select class="form-control" name="statut"  value="<%= user.statut %> " required>
+                                            <select class="form-control" name="statut" required>
                                                 <option>Active</option>
                                                 <option>Desactive</option>
                                                 
@@ -59,7 +66,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button class="btn btn-success loginbtn">Modifier</button>
+                                        <button class="btn btn-success loginbtn">Register</button>
                                         <input type="reset" class="btn btn-default"/>
                                     </div>
                                 </form>
@@ -71,10 +78,10 @@
             </div>
         </div>
     
-        <%- include("includes/footer") %> 
+        <%- include("../includes/footer") %> 
     </div>
 
-  <%- include("includes/scripts") %> 
+  <%- include("../includes/scripts") %> 
 </body>
 
 </html>

@@ -1,0 +1,71 @@
+<%- include("../includes/head")%>
+</head>
+
+<body>
+ 
+    <%- include("../includes/left_menu")%>
+
+    <div class="all-content-wrapper">
+        <%- include("../includes/logo_top") %> 
+        <div class="header-advance-area">
+            <%- include("../includes/menu_top") %> 
+            <!-- Mobile Menu start -->
+           <%- include("../includes/mobile_menu") %> 
+            <!-- Mobile Menu end -->
+            <div class="error-pagewrap">
+                <div class="error-page-int">
+                    <div class="text-center custom-login">
+                        <h3>Enregistrement de faculte</h3>
+                        <p>veuillez a bien remplir les champs</p>
+                    </div>
+                    <div class="content-error">
+                        <div class="hpanel">
+                            <div class="panel-body">
+                                <form action="/faculte/edit_faculte/<%= faculte.code_faculte %>"  method="POST">
+                                    <div class="row">
+                                        <div class="form-group col-lg-12">
+                                            <label>code Faculté   </label>
+                                            <input class="form-control" name="code_faculte" type="number" value="<%= faculte.code_faculte %>" disabled required>
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <label>nom faculte</label>
+                                            <input class="form-control" name="nom_faculte" value="<%= faculte.nom_faculte %>" required>
+                                        </div>
+                                        
+                                        <div class="form-group col-lg-4">
+                                            <label>Degre Faculté  </label>
+                                            <select class="form-control"  name="degre_faculte" >
+                                                <option value="License" <%  if (faculte.degre_faculte==="License") { %>
+                                                 <%= "selected" %> 
+                                                    <%  } %>
+                                                 >License</option>
+                                                <option value="Maitrise" <%  if (faculte.degre_faculte==="Maitrise") { %>
+                                                    <%= "selected" %> 
+                                                       <%  } %>>Maitrise</option>
+                                                <option value="Doctorat" <%  if (faculte.degre_faculte==="Doctorat") { %>
+                                                    <%= "selected" %> 
+                                                       <%  } %>>Doctorat</option>
+                                              </select>
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="text-center">
+                                        <button class="btn btn-success loginbtn">Modifier</button>
+                                        <input type="reset" class="btn btn-default"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>   
+            </div>
+        </div>
+    
+        <%- include("../includes/footer") %> 
+    </div>
+
+  <%- include("../includes/scripts") %> 
+</body>
+
+</html>
