@@ -12,12 +12,15 @@ app.set("view engine","ejs");
 //models
 const User = require("./models/user")
 const Faculte = require("./models/faculte")
+const Etudiant = require("./models/etudiant")
 
 //routes
 const user= require("./routes/users")
 const faculte= require("./routes/faculte")
+const etudiant = require("./routes/etudiant");
 app.use("/user/",user);
 app.use("/faculte/",faculte);
+app.use("/etudiant/",etudiant);
 
 
 app.get("/",async (req,res,next)=>{

@@ -40,7 +40,7 @@ const editFaculte = async (req,res,next)=>{
 }
 
 const editFacultePost = async (req,res,next)=>{
-    await Faculte.update(req.body, {
+    await Faculte.update({"nom_faculte":req.body.nom_faculte,"degre_faculte":req.body.degre_faculte}, {
         where: {
           "code_faculte": req.params.code
         }

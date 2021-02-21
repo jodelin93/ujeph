@@ -1,0 +1,184 @@
+<%- include("../includes/head")%>
+</head>
+
+<body>
+ 
+    <%- include("../includes/left_menu")%>
+
+    <div class="all-content-wrapper">
+        <%- include("../includes/logo_top") %> 
+        <div class="header-advance-area">
+            <%- include("../includes/menu_top") %> 
+            <!-- Mobile Menu start -->
+           <%- include("../includes/mobile_menu") %> 
+            <!-- Mobile Menu end -->
+
+           
+            <div class="single-pro-review-area mt-t-30 mg-b-15">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="product-payment-inner-st">
+                                <ul id="myTabedu1" class="tab-review-design">
+                                    <li class="active"><a href="#description">Basic Information</a></li>
+                                    <li><a href="#reviews"> Account Information</a></li>
+                                    <li><a href="#INFORMATION">Social Information</a></li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content custom-product-edit">
+                                    <div class="product-tab-list tab-pane fade active in" id="description">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div id="dropzone1" class="pro-ad">
+                                                        <form action="/etudiant/post_etudiant" class="dropzone dropzone-custom needsclick add-professors" id="demo1-upload" enctype="multipart/form-data" method="POST">
+                                                            <div class="row">
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                    <div class="form-group">
+                                                                        <input required name="code_etudiant" type="text" class="form-control" disabled placeholder="Code Etudiant" value="<%= code_etudiant %>">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input required name="nom_etudiant" type="text" class="form-control" placeholder="Nom">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input required name="prenom_etudiant" type="text" class="form-control" placeholder="Prenom">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select name="sexe" class="form-control" required>
+                                                                            <option  selected="" disabled="">Select Sexe</option>
+                                                                            <option >Masculin</option>
+                                                                            <option >Feminin</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input required name="date_naissance"  type="date" class="form-control" placeholder="Date Naissance">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input required name="lieu_naissance" type="text" class="form-control" placeholder="Lieu de Naissance">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select name="groupe_sanguin" class="form-control" required>
+                                                                                <option  selected="" disabled="">Groupe Sanguin</option>
+                                                                                <option >AB+</option>
+                                                                                <option >AB-</option>
+                                                                                <option >A+</option>
+                                                                                <option >A-</option>
+                                                                                <option >B+</option>
+                                                                                <option>B-</option>
+                                                                            </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select name="statut_matrimonial" class="form-control" required>
+                                                                                <option  selected="" disabled="">Statut Matrimonial</option>
+                                                                                <option >Celibataire</option>
+                                                                                <option >Marié/e</option>
+                                                                                <option >Divorcé/e</option>
+                                                                                <option >Veuf/ve</option>
+                                                                               
+                                                                            </select>
+                                                                    </div>
+                                                                   
+                                                                   
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                    <div class="form-group">
+                                                                        <input name="email" type="email" class="form-control" placeholder="E-mail">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input name="cin" type="text" class="form-control" placeholder="CIN">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input name="nif" type="text" class="form-control" placeholder="NIF">
+                                                                    </div>
+
+                                                                    <div class="form-group" >
+                                                                      <label for="">Photo</label>
+                                                                        <input name="photos"  type="file" required />
+                                                                   </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <div class="payment-adress">
+                                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-tab-list tab-pane fade" id="reviews">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="devit-card-custom">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" placeholder="Email">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="number" class="form-control" placeholder="Phone">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="password" class="form-control" placeholder="Password">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="password" class="form-control" placeholder="Confirm Password">
+                                                                </div>
+                                                                <a href="#!" class="btn btn-primary waves-effect waves-light">Submit</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-tab-list tab-pane fade" id="INFORMATION">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="devit-card-custom">
+                                                                <div class="form-group">
+                                                                    <input type="url" class="form-control" placeholder="Facebook URL">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="url" class="form-control" placeholder="Twitter URL">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="url" class="form-control" placeholder="Google Plus">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="url" class="form-control" placeholder="Linkedin URL">
+                                                                </div>
+                                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    
+        <%- include("../includes/footer") %> 
+    </div>
+
+  <%- include("../includes/scripts") %> 
+</body>
+
+</html>
