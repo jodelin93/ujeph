@@ -8,12 +8,14 @@
     <div class="all-content-wrapper">
         <%- include("includes/logo_top") %> 
         <div class="header-advance-area">
-            <%- include("includes/menu_top") %> 
+            <%- include("includes/menu_top",{user:user}) %> 
             <!-- Mobile Menu start -->
            <%- include("includes/mobile_menu") %> 
             <!-- Mobile Menu end -->
 
             <h1>place for content</h1>
+
+            
         </div>
     
         <%- include("includes/footer") %> 

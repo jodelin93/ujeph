@@ -1,13 +1,13 @@
 const Faculte= require("../models/faculte")
 
 const registerFaculte= (req,res,next)=>{
-    res.render("facultes/register_faculte");
+    res.render("facultes/register_faculte",{user:req.session.user});
 }
 
 const getFacultes = async (req,res,next)=>{
     const faculte= await Faculte.findAll();
    
-    res.render("facultes/table_facultes",{faculte});
+    res.render("facultes/table_facultes",{faculte,user:req.session.user});
 }
 
 const postFaculte = async (req,res,next)=>{
@@ -36,7 +36,7 @@ const editFaculte = async (req,res,next)=>{
         }
       });
 
-    res.render("facultes/edit_faculte",{faculte}); 
+    res.render("facultes/edit_faculte",{faculte,user:req.session.user}); 
 }
 
 const editFacultePost = async (req,res,next)=>{

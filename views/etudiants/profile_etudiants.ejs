@@ -1,0 +1,224 @@
+<%- include("../includes/head")%>
+</head>
+
+<body>
+ 
+    <%- include("../includes/left_menu")%>
+
+    <div class="all-content-wrapper">
+        <%- include("../includes/logo_top") %> 
+        <%- include("../includes/menu_top",{user:user}) %>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="single-cards-item">
+                        <div class="single-product-image">
+                            <a href="#"><img src="/img/product/profile-bg.jpg" alt=""></a>
+                        </div>
+                        <div class="single-product-text">
+                            <img src="/photos/<%= etudiant.photos %> " alt="">
+                            <h3><a class="cards-hd-dn" href="#"><%= etudiant.nom_etudiant %> <%= etudiant.prenom_etudiant %>  </a></h3>
+                            <h4>code : <%= etudiant.code_etudiant %> </h4>
+                            <p class="ctn-cards">Lorem ipsum dolor sit amet, this is a consectetur adipisicing elit</p>
+                            <a class="follow-cards" href="/immatriculation/register/<%= etudiant.code_etudiant %>">Immatriculer</a>
+                            <a class="follow-cards" href="/immatriculation/register/<%= etudiant.code_etudiant %>">Donner Bourses</a>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="cards-dtn">
+                                        <h3><span >Sexe</span></h3>
+                                        <p><%= etudiant.sexe %> </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="cards-dtn">
+                                        <h3><span >CIN</span></h3>
+                                        <p><%= etudiant.cin%> </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="cards-dtn">
+                                        <h3><span >NIF</span></h3>
+                                        <p><%= etudiant.nif %> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="single-product-item res-mg-t-30 table-mg-t-pro-n tb-sm-res-d-n dk-res-t-d-n">
+                        <div class="single-product-image">
+                            <a href="#"><img src="/img/product/book-4.jpg" alt=""></a>
+                        </div>
+                        <div class="single-product-text edu-pro-tx">
+                            <h4><a href="#">Title Demo Here</a></h4>
+                            <h5>Lorem ipsum dolor sit amet, this is a consec tetur adipisicing elit</h5>
+                            <div class="product-price">
+                                <h3>$45</h3>
+                                <div class="single-item-rating">
+                                    <i class="educate-icon educate-star"></i>
+                                    <i class="educate-icon educate-star"></i>
+                                    <i class="educate-icon educate-star"></i>
+                                    <i class="educate-icon educate-star"></i>
+                                    <i class="educate-icon educate-star-half"></i>
+                                </div>
+                            </div>
+                            <div class="product-buttons">
+                                <button type="button" class="button-default cart-btn">Read More</button>
+                                <button type="button" class="button-default"><i class="fa fa-heart"></i></button>
+                                <button type="button" class="button-default"><i class="fa fa-share"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="single-review-st-item res-mg-t-30 table-mg-t-pro-n">
+                        
+                        <div class="single-review-st-text">
+                           
+                            <div class="review-ctn-hf">
+                                <h3>Date naissance</h3>
+                                <p><%= etudiant.date_naissance %> </p>
+                            </div>
+                           
+                        </div>
+                        <div class="single-review-st-text">
+                           
+                            <div class="review-ctn-hf">
+                                <h3>Lieu Naissance</h3>
+                                <p><%= etudiant.lieu_naissance %> </p>
+                            </div>
+                           
+                        </div>
+                        <div class="single-review-st-text">
+                          
+                            <div class="review-ctn-hf">
+                                <h3>Email</h3>
+                                <p><%= etudiant.email %> </p>
+                            </div>
+                           
+                        </div>
+                        <div class="single-review-st-text">
+                            
+                            <div class="review-ctn-hf">
+                                <h3>Groupe Sanguin</h3>
+                                <p><%= etudiant.groupe_sanguin %> </p>
+                            </div>
+                          
+                        </div>
+                        <div class="single-review-st-text">
+                            
+                            <div class="review-ctn-hf">
+                                <h3>Personne Responsable</h3>
+                                <p><%= etudiant_infos.personne_resp %> </p>
+                            </div>
+                            
+                        </div>
+                        <div class="single-review-st-text">
+                           
+                            <div class="review-ctn-hf">
+                                <h3>Telephone Responsable</h3>
+                                <p><%= etudiant_infos.telephone_resp %></p>
+                            </div>
+                          
+                        </div>
+                        <div class="single-review-st-text">
+                           
+                            <div class="review-ctn-hf">
+                                <h3>Maladie</h3>
+                                <p><%= etudiant_infos.maladie %></p>
+                            </div>
+                          
+                        </div>
+                        <div class="single-review-st-text">
+                           
+                            <div class="review-ctn-hf">
+                                <h3>Contact en cas maladie</h3>
+                                <p><%= etudiant_infos.contact_maladie %></p>
+                            </div>
+                          
+                        </div>
+                        <div class="single-review-st-text">
+                           
+                            <div class="review-ctn-hf">
+                                <h3>Telephone Etudiant</h3>
+                                <p><%= etudiant_infos.telephone_etudiant %></p>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="single-review-st-item res-mg-t-30 table-mg-t-pro-n">
+                        
+                        <div class="single-review-st-text">
+                           
+                            <div class="review-ctn-hf">
+                                <h3>Acte de naissance</h3>
+                                <p><a href="#">Cliquer pour telecharger</a> </p>
+                            </div>
+                           
+                        </div>
+                        <div class="single-review-st-text">
+                           
+                            <div class="review-ctn-hf">
+                                <h3>Carte identité</h3>
+                                <p><a href="#">Cliquer pour telecharger</a> </p>
+                            </div>
+                           
+                        </div>
+                        <div class="single-review-st-text">
+                          
+                            <div class="review-ctn-hf">
+                                <h3>Matricule</h3>
+                                <p><a href="#">Cliquer pour telecharger</a> </p>
+                            </div>
+                           
+                        </div>
+                        <div class="single-review-st-text">
+                            
+                            <div class="review-ctn-hf">
+                                <h3>Diplome Bacc</h3>
+                                <p><a href="#">Cliquer pour telecharger</a> </p>
+                            </div>
+                          
+                        </div>
+                        <div class="single-review-st-text">
+                            
+                            <div class="review-ctn-hf">
+                                <h3>Releve de note Bacc</h3>
+                                <p><a href="#">Cliquer pour telecharger</a> </p>
+                            </div>
+                            
+                        </div>
+                        <div class="single-review-st-text">
+                           
+                            <div class="review-ctn-hf">
+                                <h3>Certificat Bonne vies et Moeurs</h3>
+                                <p><a href="#">Cliquer pour telecharger</a> </p>
+                            </div>
+                          
+                        </div>
+                        <div class="single-review-st-text">
+                           
+                            <div class="review-ctn-hf">
+                                <h3>Releve de Note derniere institution</h3>
+                                <p><a href="#">Cliquer pour telecharger</a> </p>
+                            </div>
+                          
+                        </div>
+                       
+                      
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    
+        <%- include("../includes/footer") %> 
+    </div>
+
+  <%- include("../includes/scripts") %> 
+</body>
+
+</html>

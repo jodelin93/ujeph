@@ -1,4 +1,5 @@
 <%- include("../includes/head")%>
+
 </head>
 
 <body>
@@ -8,12 +9,19 @@
     <div class="error-pagewrap">
 		<div class="error-page-int">
 			<div class="text-center m-b-md custom-login">
+                 
+
 				<h3>Entrer vos infomations personelles</h3>
 				<p>si vous n'avez pas de compte contactez l'administrateur</p>
 			</div>
 			<div class="content-error">
 				<div class="hpanel">
                     <div class="panel-body">
+                       
+                            <% if(message.length>0) {%>
+                                 <div class="alert alert-danger"><%= message %></div>
+                            <% } %> 
+                       
                         <form action="/" id="loginForm" method="POST">
                             <div class="form-group">
                                 <label class="control-label" for="username">Username</label>
@@ -25,7 +33,7 @@
                                 <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password" id="password" class="form-control">
                                 <span class="help-block small">Yur strong password</span>
                             </div>
-                           
+                          
                             <button class="btn btn-success btn-block loginbtn">Login</button>
                            
                         </form>
@@ -38,8 +46,10 @@
     
         <%- include("../includes/footer") %> 
     </div>
-
+    
   <%- include("../includes/scripts") %> 
+ 
 </body>
 
 </html>
+

@@ -21,7 +21,7 @@ const Etudiant=connection.define("etudiant",{
         allowNull:false,
     },
     date_naissance:{
-        type:DataTypes.DATE,
+        type:DataTypes.DATEONLY,
         allowNull:false,
     },
     lieu_naissance:{

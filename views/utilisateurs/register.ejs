@@ -8,7 +8,7 @@
     <div class="all-content-wrapper">
         <%- include("../includes/logo_top") %> 
         <div class="header-advance-area">
-            <%- include("../includes/menu_top") %> 
+            <%- include("../includes/menu_top",{user:user}) %> 
             <!-- Mobile Menu start -->
            <%- include("../includes/mobile_menu") %> 
             <!-- Mobile Menu end -->
@@ -22,6 +22,9 @@
                     <div class="content-error">
                         <div class="hpanel">
                             <div class="panel-body">
+                                <% if(message.length>0) {%>
+                                    <div class="alert alert-danger"><%= message %></div>
+                               <% } %> 
                                 <form action="/user/postUser"  method="POST">
                                     <div class="row">
                                         <div class="form-group col-lg-12">
@@ -38,7 +41,7 @@
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>Password</label>
-                                            <input type="password" class="form-control" name=password required>
+                                            <input autocomplete="off" type="password" class="form-control" name=password required>
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>Repeat Password</label>

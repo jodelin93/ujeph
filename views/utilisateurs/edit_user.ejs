@@ -8,7 +8,7 @@
     <div class="all-content-wrapper">
         <%- include("../includes/logo_top") %> 
         <div class="header-advance-area">
-            <%- include("../includes/menu_top") %> 
+            <%- include("../includes/menu_top",{user:user}) %> 
             <!-- Mobile Menu start -->
            <%- include("../includes/mobile_menu") %> 
             <!-- Mobile Menu end -->
@@ -22,28 +22,31 @@
                     <div class="content-error">
                         <div class="hpanel">
                             <div class="panel-body">
-                                <form action="/user/updatetUser/<%= user.username %>"  method="POST">
+                                <% if(message.length>0) {%>
+                                    <div class="alert alert-danger"><%= message %></div>
+                               <% } %> 
+                                <form action="/user/updatetUser/<%= users.username %>"  method="POST">
                                     <div class="row">
                                         <div class="form-group col-lg-12">
                                             <label>Nom</label>
-                                            <input class="form-control" name="nom_user" value="<%= user.nom_user %> " required>
+                                            <input class="form-control" name="nom_user" value="<%= users.nom_user %>" required>
                                         </div>
                                         <div class="form-group col-lg-12">
                                             <label>Prenom</label>
-                                            <input class="form-control" name="prenom_user" value="<%= user.prenom_user %> " required>
+                                            <input class="form-control" name="prenom_user" value="<%= users.prenom_user %>" required>
                                         </div>
                                         <div class="form-group col-lg-12">
-                                            <label>Username</label>
-                                            <input class="form-control" name="username" value="<%= user.username %> " required>
+                                            
+                                            <input type="hidden" class="form-control" name="username" value="<%= users.username %>" required>
                                         </div>
                                         
                                         <div class="form-group col-lg-4">
                                             <label>Fonction</label>
-                                            <input class="form-control" name="fonction"  value="<%= user.fonction %> " required>
+                                            <input class="form-control" name="fonction"  value="<%= users.fonction %>" required>
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label>Droit</label>
-                                            <select class="form-control" name="droit" value="<%= user.droit %> " required>
+                                            <select class="form-control" name="droit" value="<%= users.droit %>" required>
                                                 <option>Administrateur</option>
                                                 <option>Utilisateur</option>
                                                 
@@ -51,7 +54,7 @@
                                         </div>
                                         <div class="form-group col-lg-4">
                                             <label>Statut</label>
-                                            <select class="form-control" name="statut"  value="<%= user.statut %> " required>
+                                            <select class="form-control" name="statut"  value="<%= users.statut %>" required>
                                                 <option>Active</option>
                                                 <option>Desactive</option>
                                                 
@@ -60,7 +63,7 @@
                                     </div>
                                     <div class="text-center">
                                         <button class="btn btn-success loginbtn">Modifier</button>
-                                        <input type="reset" class="btn btn-default"/>
+                                       
                                     </div>
                                 </form>
                             </div>
