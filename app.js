@@ -20,16 +20,20 @@ const Etudiant = require("./models/etudiant")
 const Etudiant_Infos = require("./models/Etudiant_info")
 const Etudiant_Documents = require("./models/etudiant_documents")
 const Immatriculation = require("./models/immatriculation")
+const Depense = require("./models/depenses");
+const Tydepense = require("./models/type_depense");
 
 //routes
 const user= require("./routes/users")
 const faculte= require("./routes/faculte")
 const etudiant = require("./routes/etudiant");
 const immatriculation = require("./routes/immatriculation");
+const depense = require("./routes/depense");
 app.use("/user/",user);
 app.use("/faculte/",faculte);
 app.use("/etudiant/",etudiant);
 app.use("/immatriculation/",immatriculation);
+app.use("/depense/",depense);
 
 Etudiant.hasOne(Etudiant_Infos,{
   as: 'Current',

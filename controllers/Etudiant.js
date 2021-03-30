@@ -200,6 +200,7 @@ const profil_etudiant = async (req,res,next)=>{
 }
 
 const edit_etudiant= async (req,res,next)=>{
+  console.log("yes");
   const code_etudiant= req.params.code_etudiant;
  try {
   const etudiant=await Etudiant.findOne({
@@ -221,6 +222,52 @@ const edit_etudiant= async (req,res,next)=>{
  
 }
 
+const Postedit_etudiant= async (req,res,next)=>{
+  
+  const code_etudiant= req.params.code_etudiant;
+  
+  const etudiant={
+    "nom_etudiant":req.body.nom_etudiant,
+    "prenom_etudiant":req.body.prenom_etudiant,
+    "sexe":req.body.sexe,
+    "date_naissance":req.body.date_naissance,
+    "lieu_naissance":req.body.lieu_naissance,
+    "group_sanguin":req.body.group_sanguin,
+    "statut_matrimonial":req.body.group_sanguin,
+    "email":req.body.email,
+    "cin":req.body.cin,
+    "nif":req.body.nif
+  }
+
+  await Etudiant.update(etudiant, {
+    where: {
+      "code_etudiant": code_etudiant
+    }
+  });
+  res.redirect("/etudiant/table_etudiants");
+}
+
+const Postedit_etudiant2= async (req,res,next)=>{
+  
+  const code_etudiant= req.params.code_etudiant;
+  
+  const etudiant_infos={
+    "occupation":req.body.occupation,
+    "personne_resp":req.body.personne_resp,
+    "telephone_resp":req.body.telephone_resp,
+    "telephone_etudiant":req.body.telephone_etudiant,
+    "maladie":req.body.maladie,
+    "contact_maladie":req.body.contact_maladie,
+  }
+
+  await Etudiant_info.update(etudiant_infos, {
+    where: {
+      "code_etudiant": code_etudiant
+    }
+  });
+  res.redirect("/etudiant/table_etudiants");
+}
+
 
 module.exports={
     register_etudiant,
@@ -231,5 +278,7 @@ module.exports={
     get_etudiant,
     remove_etudiant,
     profil_etudiant,
-    edit_etudiant
+    edit_etudiant,
+    Postedit_etudiant,
+    Postedit_etudiant2
 }

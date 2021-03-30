@@ -10,6 +10,10 @@ router.get("/table_etudiants",Etudiant.get_etudiant
 );
 router.get("/edit_etudiant/:code_etudiant",Etudiant.edit_etudiant
 );
+router.post("/edit_etudiant/:code_etudiant",Etudiant.Postedit_etudiant
+);
+router.post("/edit_etudiant2/:code_etudiant",Etudiant.Postedit_etudiant2
+);
 router.get("/profil_etudiant/:code_etudiant",Etudiant.profil_etudiant
 );
 router.post("/post_etudiant",Etudiant.post_etudiant
