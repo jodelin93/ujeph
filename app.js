@@ -1,15 +1,37 @@
 const express = require("express");
-const session = require("express-session");
+require("dotenv").config();
 const PORT = process.env.PORT|| 3000;
 const connection= require("./models/database");
 const path= require("path")
 const flush = require('connect-flash');
+const session = require("express-session");
+const MySQLStore = require("express-mysql-session")(session);
+const passport = require("passport");
 const app= express();
+const auth = require("./config/auth");
 app.use(flush());
-app.use(session({secret:"jodelindesrameaux.com@",resave:false,saveUninitialized:true}))
 app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname,"public/")));
-
+app.use(require("connect-flash")());
+var options = {
+  host: "localhost",
+  port: 3306,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME,
+};
+var sessionStore = new MySQLStore(options);
+app.use(
+  session({
+    secret: process.env.SECRET_SESSION,
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+require("./config/passport")(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 // settings views
 app.set("view engine","ejs");
 
@@ -65,32 +87,21 @@ app.get("/",async (req,res,next)=>{
 });
 app.post("/",async (req,res,next)=>{
   
-    const user=await User.findOne({
-        where: {
-          "username": req.body.username,
-          "password":req.body.password
-        }
-      });
-     
-      if(user){
-
-        
-        req.session.user=user;
-        res.render("index",{user:req.session.user})  
-      }else{
-        req.flash("message","Nom d'utilisateur ou mot de passe incorrect ");
-        const message= req.flash("message");
-        res.render("utilisateurs/login",{message})
-      }
+  passport.authenticate("local",{
+    successRedirect:"/index",
+    failureRedirect:"/",
+    successFlash:true
+})(req,res,next)
     
 });
 
-app.get("/index",(req,res,next)=>{
+app.get("/index",auth,(req,res,next)=>{
   res.render("index",{user:req.session.user});
 })
 
 app.get("/logout",(req,res,next)=>{
-  res.redirect("/")
+  req.logOut();
+    res.redirect("/")
 })
 
 app.get('/download/:fichier', function(req, res){

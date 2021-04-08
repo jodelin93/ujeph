@@ -1,14 +1,17 @@
 const User= require("../models/user")
+const bcrypt = require("bcrypt");
 const getRegisterPage=(req,res,next)=>{
     res.render("utilisateurs/register",{message:req.flash("message"),user:req.session.user});
 }
 
 const postUser = async (req,res,next)=>{
+   const saltPassword= await bcrypt.hash(req.body.password,10)
     const user={
+       
         nom_user:req.body.nom_user,
         prenom_user:req.body.prenom_user,
         username:req.body.username,
-        password:req.body.password,
+        password:saltPassword,
         fonction:req.body.fonction,
         droit:req.body.droit,
         statut:req.body.statut,
