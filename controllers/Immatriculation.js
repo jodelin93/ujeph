@@ -62,9 +62,6 @@ const getImmatriculation= async (req,res,next)=>{
        
           const immatriculation= await   Immatriculation.findAll({include:[Faculte,Etudiant]});
           
-            console.log(immatriculation);
-
-          
 
             res.render("immatriculation/table_immatricules",{immatriculation})
          
