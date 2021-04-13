@@ -38,7 +38,7 @@ const register_etudiant = async (req,res,next) =>{
     const rand2= Math.floor(Math.random()*1000) ;
     code_etudiant = `${rand1}-${nombre_etudiant}-${rand2}`;
     console.log(code_etudiant);
-res.render("etudiants/register_etudiant",{code_etudiant,user:req.session.user})
+res.render("etudiants/register_etudiant",{code_etudiant,user:res.locals.user})
 }
 
 const post_etudiant =  (req,res,next)=>{
@@ -57,7 +57,7 @@ const upload = multer({
 
     upload(req,res,async (error)=>{
         if(error){
-            res.render("etudiants/register_etudiant",{code_etudiant,user:req.session.user}) 
+            res.render("etudiants/register_etudiant",{code_etudiant,user:res.locals.user}) 
         }else{
            
             req.body={...req.body,code_etudiant,photos:req.file.filename}
@@ -68,7 +68,7 @@ const upload = multer({
                 const etudiant=JSON.parse(localStorage.getItem("etudiant"));
                 
                 var date_nai = new Date(etudiant.date_naissance).toISOString().slice(0,10);
-                res.render("etudiants/register_etudiant2",{date_nai,etudiant,user:req.session.user}) 
+                res.render("etudiants/register_etudiant2",{date_nai,etudiant,user:res.locals.user}) 
             } catch (error) {
                 console.log(error);
             }
@@ -93,7 +93,7 @@ const post_etudiant2 =  async  (req,res,next)=>{
 
 const post_etudiant3 =  async (req,res,next)=>{
      if(!req.files){
-        res.render("etudiants/register_etudiant3",{code_etudiant,user:req.session.user}) 
+        res.render("etudiants/register_etudiant3",{code_etudiant,user:res.locals.user}) 
      }else{
         try {
             
@@ -124,7 +124,7 @@ const post_etudiant3 =  async (req,res,next)=>{
 
 const get_etudiant = async (req,res,next)=>{
     const etudiant = await Etudiant.findAll();
-    res.render("etudiants/table_etudiants",{etudiant,user:req.session.user})
+    res.render("etudiants/table_etudiants",{etudiant,user:res.locals.user})
 
 }
 
@@ -192,7 +192,7 @@ const profil_etudiant = async (req,res,next)=>{
             }else{
               infos_etudiant=etudiant_infos;
             }
-          res.render("etudiants/profile_etudiants",{user:req.session.user,etudiant,"etudiant_infos":infos_etudiant,etu_doc:etudiant_documents})
+          res.render("etudiants/profile_etudiants",{user:res.locals.user,etudiant,"etudiant_infos":infos_etudiant,etu_doc:etudiant_documents})
     } catch (error) {
         console.log(error);
     }
@@ -215,7 +215,7 @@ const edit_etudiant= async (req,res,next)=>{
     }
   });
   var date_naissance = new Date(etudiant.date_naissance).toISOString().slice(0,10);
-  res.render("etudiants/edit_etudiant",{user:req.session.user,date_naissance,etudiant,etudiant_infos});
+  res.render("etudiants/edit_etudiant",{user:res.locals.user,date_naissance,etudiant,etudiant_infos});
  } catch (error) {
    console.log(error);
  }

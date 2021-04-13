@@ -1,7 +1,7 @@
 const User= require("../models/user")
 const bcrypt = require("bcrypt");
 const getRegisterPage=(req,res,next)=>{
-    res.render("utilisateurs/register",{message:req.flash("message"),user:req.session.user});
+    res.render("utilisateurs/register",{message:req.flash("message"),user:res.locals.user});
 }
 
 const postUser = async (req,res,next)=>{
@@ -20,14 +20,14 @@ const postUser = async (req,res,next)=>{
     if(req.body.password!==req.body.password_confirm){
         req.flash("message","les mots de passe ne correspondent pas");
         const message= req.flash("message");
-        return res.render("utilisateurs/register",{message,user:req.session.user});
+        return res.render("utilisateurs/register",{message,user:res.locals.user});
     }
     const myuser= await User.findOne({where :{"username":req.body.username}});
   
     if(myuser){
         req.flash("message","un utilisateur deja existant avec ce nom");
         const message= req.flash("message");
-        return res.render("utilisateurs/register",{message,user:req.session.user});
+        return res.render("utilisateurs/register",{message,user:res.locals.user});
     }else{
         await User.create(user);
         const user_list= await User.findAll();
@@ -63,7 +63,7 @@ const editUser = async (req,res,next)=>{
       });
 
 
-    res.render("utilisateurs/edit_user",{message:req.flash("message"),users,user:req.session.user});
+    res.render("utilisateurs/edit_user",{message:req.flash("message"),users,user:res.locals.user});
 }
 
 const updatetUser=async  (req,res,next)=>{

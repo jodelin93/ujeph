@@ -3,14 +3,14 @@ const express = require("express");
 const path = require("path")
 const User= require("../controllers/User");
 const router = express.Router();
+const auth = require("../config/auth");
 
-
-router.get("/register",User.getRegisterPage);
-router.post("/postUser",User.postUser);
-router.post("/updatetUser/:username",User.updatetUser);
-router.get("/table_users",User.getUsers);
-router.get("/table_users/:username",User.delUser);
-router.get("/edit_user/:username",User.editUser);
+router.get("/register",auth,User.getRegisterPage);
+router.post("/postUser",auth,User.postUser);
+router.post("/updatetUser/:username",auth,User.updatetUser);
+router.get("/table_users",auth,User.getUsers);
+router.get("/table_users/:username",auth,User.delUser);
+router.get("/edit_user/:username",auth,User.editUser);
 
 
 

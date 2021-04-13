@@ -16,6 +16,8 @@
     <thead>
         <tr>
             <th>code_ Etudiant </th>
+            <th>nom_ Etudiant </th>
+            <th>prenom_ Etudiant </th>
             <th>nom faculte </th>
             <th>niveau</th>
             <th>vacation</th>
@@ -29,6 +31,8 @@
         <% immatriculation.forEach(element =>{ %> 
         <tr>
             <td><%= element.code_etudiant%></td>
+            <td><%= element.etudiant.nom_etudiant%></td>
+            <td><%= element.etudiant.prenom_etudiant%></td>
             <td><%= element.faculte.nom_faculte %></td>
             <td><%= element.niveau %></td>
             <td><%= element.vacation%></td>
@@ -42,6 +46,8 @@
     <tfoot>
         <tr>
             <th>code_ Etudiant </th>
+            <th>nom_ Etudiant </th>
+            <th>prenom_ Etudiant </th>
             <th>nom faculte </th>
             <th>niveau</th>
             <th>vacation</th>

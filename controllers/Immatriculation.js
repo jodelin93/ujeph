@@ -1,12 +1,13 @@
 const Immatriculation= require("../models/immatriculation")
-const Faculte= require("../models/faculte")
+const Faculte= require("../models/faculte");
+const Etudiant = require("../models/etudiant");
 let message= ""
 
 const register = async (req,res,next)=>{
     try {
         const faculte= await Faculte.aggregate( 'nom_faculte', 'DISTINCT', { plain: false });
         console.log(faculte);
-        res.render("immatriculation/register",{user:req.session.user,code_etudiant:req.params.code_etudiant,faculte,message})
+        res.render("immatriculation/register",{user:res.locals.user,code_etudiant:req.params.code_etudiant,faculte,message})
     } catch (error) {
        console.log(error); 
     }
@@ -34,7 +35,7 @@ const postImmatriculation = async (req,res,next)=>{
           if(immatriculation){
               message="cet etudiant a été déjà immatriculé pour cette année";
               const faculte= await Faculte.aggregate( 'nom_faculte', 'DISTINCT', { plain: false });
-              res.render("immatriculation/register",{user:req.session.user,code_etudiant:req.body.code_etudiant,message,faculte})
+              res.render("immatriculation/register",{user:res.locals.user,code_etudiant:req.body.code_etudiant,message,faculte})
           }else{
             const faculte =await Faculte.findOne({
                 where: {
@@ -59,7 +60,7 @@ const getImmatriculation= async (req,res,next)=>{
 
     try {
        
-          const immatriculation= await   Immatriculation.findAll({include:Faculte});
+          const immatriculation= await   Immatriculation.findAll({include:[Faculte,Etudiant]});
           
             console.log(immatriculation);
 

@@ -44,6 +44,7 @@ const Etudiant_Documents = require("./models/etudiant_documents")
 const Immatriculation = require("./models/immatriculation")
 const Depense = require("./models/depenses");
 const Tydepense = require("./models/type_depense");
+const Paiement = require("./models/paiement");
 
 //routes
 const user= require("./routes/users")
@@ -51,11 +52,13 @@ const faculte= require("./routes/faculte")
 const etudiant = require("./routes/etudiant");
 const immatriculation = require("./routes/immatriculation");
 const depense = require("./routes/depense");
+const paiement = require("./routes/paiement");
 app.use("/user/",user);
 app.use("/faculte/",faculte);
 app.use("/etudiant/",etudiant);
 app.use("/immatriculation/",immatriculation);
 app.use("/depense/",depense);
+//app.use("/paiement/",paiement);
 
 Etudiant.hasOne(Etudiant_Infos,{
   as: 'Current',
@@ -74,6 +77,13 @@ Immatriculation.belongsTo(Etudiant,{
   
 });
  Immatriculation.belongsTo(Faculte,{
+  foreignKey: 'code_faculte',
+});
+Paiement.belongsTo(Etudiant,{
+  foreignKey: 'code_etudiant',
+  
+});
+ Paiement.belongsTo(Faculte,{
   foreignKey: 'code_faculte',
 });
 // Etudiant_Infos.belongsTo(Etudiant,{
@@ -96,7 +106,8 @@ app.post("/",async (req,res,next)=>{
 });
 
 app.get("/index",auth,(req,res,next)=>{
-  res.render("index",{user:req.session.user});
+  console.log(res.locals.user);
+  res.render("index",{user:res.locals.user});
 })
 
 app.get("/logout",(req,res,next)=>{
