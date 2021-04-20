@@ -11,6 +11,7 @@ const app= express();
 const auth = require("./config/auth");
 app.use(flush());
 app.use(express.urlencoded({extended:true}))
+app.use(express.json())
 app.use(express.static(path.join(__dirname,"public/")));
 app.use(require("connect-flash")());
 var options = {
@@ -45,6 +46,7 @@ const Immatriculation = require("./models/immatriculation")
 const Depense = require("./models/depenses");
 const Tydepense = require("./models/type_depense");
 const Paiement = require("./models/paiement");
+const Bourse = require("./models/bourses");
 
 //routes
 const user= require("./routes/users")
@@ -53,12 +55,14 @@ const etudiant = require("./routes/etudiant");
 const immatriculation = require("./routes/immatriculation");
 const depense = require("./routes/depense");
 const paiement = require("./routes/paiement");
+const bourse = require("./routes/bourse");
 app.use("/user/",user);
 app.use("/faculte/",faculte);
 app.use("/etudiant/",etudiant);
 app.use("/immatriculation/",immatriculation);
 app.use("/depense/",depense);
-//app.use("/paiement/",paiement);
+app.use("/paiement/",paiement);
+app.use("/bourse/",bourse);
 
 Etudiant.hasOne(Etudiant_Infos,{
   as: 'Current',
@@ -83,14 +87,9 @@ Paiement.belongsTo(Etudiant,{
   foreignKey: 'code_etudiant',
   
 });
- Paiement.belongsTo(Faculte,{
-  foreignKey: 'code_faculte',
+Bourse.belongsTo(Etudiant,{
+  foreignKey: 'code_etudiant',
 });
-// Etudiant_Infos.belongsTo(Etudiant,{
-//   as: 'Current',
-//   foreignKey: 'code_etudiant',
-//   constraints: true
-// });
 app.get("/",async (req,res,next)=>{
   console.log(req.flash("message"));
     res.render("utilisateurs/login",{message:req.flash("message")})

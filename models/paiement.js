@@ -2,9 +2,8 @@ const connection = require("./database");
 const {DataTypes} = require("sequelize");
 const Paiement = connection.define("paiement",{
     code_paiement:{
-        type:DataTypes.UUID,
+        type:DataTypes.STRING,
         primaryKey:true,
-        defaultValue: DataTypes.UUIDV4,
     },mode_paiement:{
         type:DataTypes.STRING,
         allowNull:false
@@ -17,8 +16,11 @@ const Paiement = connection.define("paiement",{
         type:DataTypes.STRING,
         allowNull:false
 
-    },code_faculte:{
-        type:DataTypes.INTEGER,
+    },nom_faculte:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },objet_paiement:{
+        type:DataTypes.STRING,
         allowNull:false
     },
     annee_academique:{

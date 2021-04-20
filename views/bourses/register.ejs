@@ -1,0 +1,69 @@
+<%- include("../includes/head")%>
+</head>
+
+<body>
+ 
+    <%- include("../includes/left_menu")%>
+
+    <div class="all-content-wrapper">
+        <%- include("../includes/logo_top") %> 
+        <div class="header-advance-area">
+            <%- include("../includes/menu_top",{user:user}) %> 
+            <!-- Mobile Menu start -->
+           <%- include("../includes/mobile_menu") %> 
+            <!-- Mobile Menu end -->
+
+            <div class="error-pagewrap">
+                <div class="error-page-int">
+                    <div class="text-center custom-login">
+                        <h3>Enregistrement de Bourses</h3>
+                        <p>veuillez a bien remplir le champs</p>
+                    </div>
+                    <div class="content-error">
+                        <div class="hpanel">
+                            <div class="panel-body">
+                                <form action="/bourse/postRegister"  method="POST">
+                                    <div class="row">
+                                        
+                                        <div class="form-group col-lg-12">
+                    
+                                        
+                                            <input type="hidden" class="form-control" name="code_etudiant" value="<%=etudiant.code_etudiant%>" required>
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <label>montant</label>
+                                        
+                                            <input type="number" class="form-control" name="montant"step="any" required>
+                                        </div>
+
+                                                 
+                                        <div class="form-group">
+                                            <select name="annee" class="form-control" required>
+                                                <option value="" selected="" disabled="" >Selectionner Année academique</option>
+            
+                                                <option >2020-2021</option>
+                                                
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="text-center">
+                                        <button class="btn btn-success loginbtn">Enregistrer</button>
+                                        <input type="reset" class="btn btn-default"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>   
+            </div>
+        </div>
+    
+        <%- include("../includes/footer") %> 
+    </div>
+
+  <%- include("../includes/scripts") %> 
+</body>
+
+</html>

@@ -17,57 +17,58 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="review-content-section">
-                            <h4 class="text-danger"><%= message %> </h4>
+                          
                             <div id="dropzone1" class="pro-ad">
-                                <form action="/immatriculation/register"  id="demo1-upload" method="POST">
+                                <form action="/paiement/postRegister"  id="demo1-upload" method="POST">
                                     <div class="row" style="margin: auto;">
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="form-group">
-                                                <input name="code_etudiant" type="hidden" class="form-control" value="<%= code_etudiant %>" required   />
+                                                <input name="code_etudiant" type="hidden" class="form-control" value="<%= immatriculation[0].code_etudiant %> "  required   />
                                             </div>
                                             <div class="form-group">
-                                                <select name="faculte" class="form-control" required>
+                                                <input name="montant" type="number" placeholder="montant" class="form-control"  required   />
+                                            </div>
+                                            <div class="form-group">
+                                                <select name="objet_paiement" class="form-control" required>
+                                                    <option value="" selected="" disabled="" >Objet Paiement</option>
+                                                    <option >Scolarite</option>
+                                                    <option >Maillot</option>
+                                                    <option >Badge</option>
+                                                    <option >Assurance</option>
+                                        
+                                                      
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <select name="nom_faculte" class="form-control" required>
                                                     <option value="" selected="" disabled="" >Selectionner Faculté</option>
-                                                    <% faculte.forEach(fac =>{ %> 
+                                                    <% immatriculation.forEach(fac =>{ %> 
                                                    
-                                                    <option ><%= fac.DISTINCT %> </option>
+                                                        <option ><%= fac.faculte.nom_faculte %> </option>
+                                                      
+                                                        <% }) %> 
                                                   
-                                                    <% }) %> 
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <select name="niveau" class="form-control" required>
-                                                    <option value="" selected="" disabled="" >Selectionner niveau</option>
-                                                    <option >I</option>
-                                                    <option >II</option>
-                                                    <option >III</option>
-                                                    <option >IV</option>
-                                                    <option >V</option>  
+                                                <select name="mode_paiement" class="form-control" required>
+                                                    <option value="" selected="" disabled="" >Selectionner mode Paiement</option>
+                                                    <option >Cash</option>
+                                                    <option >MonCash Jephté </option>
+                                                    <option >MonCash SION</option>
+                                                    <option >UNIBANK</option>
+                                                    <option >SOGEBANK</option>  
+                                                    <option >BNC</option>
+                                                    <option >FONKOZE</option>
+                                                      
                                                 </select>
                                             </div>
+                                            
+                                           
                                             <div class="form-group">
-                                                <select name="vacation" class="form-control" required>
-                                                    <option value="" selected="" disabled="" >Selectionner vacation</option>
-                                                    <option >A.M</option>
-                                                    <option >P.M</option>
-                                                    <option >Weekend</option>
-                                                     
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <select name="degre" class="form-control" required>
-                                                    <option value="" selected="" disabled="" >Selectionner Degre</option>
-                                                    <option >licence</option>
-                                                    <option >Maitrise</option>
-                                                    <option >Doctorat</option>
-                                                    
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <select name="annee" class="form-control" required>
+                                                <select name="annee_academique" class="form-control" required>
                                                     <option value="" selected="" disabled="" >Selectionner Année academique</option>
-                                                    <option >2018-2019</option>
-                                                    <option >2019-2020</option>
+                
                                                     <option >2020-2021</option>
                                                     
                                                 </select>
@@ -75,8 +76,8 @@
                                             
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="payment-adress">
-                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Enregistrer</button>
+                                            <div class="payment-adress"  style="padding-bottom: 3px;">
+                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Payer</button>
                                             </div>
                                         </div>
                                     </div>
