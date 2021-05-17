@@ -1,0 +1,94 @@
+<%- include("../includes/head")%>
+</head>
+
+<body>
+ 
+    <%- include("../includes/left_menu")%>
+
+    <div class="all-content-wrapper">
+        <%- include("../includes/logo_top") %> 
+        <div class="header-advance-area">
+            <%- include("../includes/menu_top",{user:user}) %> 
+            <!-- Mobile Menu start -->
+           <%- include("../includes/mobile_menu") %> 
+            <!-- Mobile Menu end -->
+
+           
+            <div class="single-pro-review-area mt-t-30 mg-b-15">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="product-payment-inner-st">
+                             
+                                <div id="myTabContent" class="tab-content custom-product-edit">
+                                    <div class="product-tab-list tab-pane fade active in" id="description">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="review-content-section">
+                                                    <div id="dropzone1" class="pro-ad">
+                                                        <form action="/professeur/postProfesseur" class="dropzone dropzone-custom needsclick add-professors" method="POST">
+                                                            <div class="row">
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                 
+                                                                    <div class="form-group">
+                                                                        <input required name="nom_professeur" type="text" class="form-control" placeholder="Nom">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input required name="prenom_professeur" type="text" class="form-control" placeholder="Prenom">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select name="sexe" class="form-control" required>
+                                                                            <option  selected="" disabled="">Select Sexe</option>
+                                                                            <option >Masculin</option>
+                                                                            <option >Feminin</option>
+                                                                        </select>
+                                                                    </div>
+                                                                   
+                                                                    <div class="form-group">
+                                                                        <input required name="telephone" type="text" class="form-control" placeholder="telephone">
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <input required name="email" type="email" class="form-control" placeholder="email">
+                                                                    </div>
+                                                                  
+                                                                   
+                                                                   
+                                                                   
+                                                                </div>
+                                                               
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <div class="payment-adress">
+                                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+   
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    
+        <%- include("../includes/footer") %> 
+    </div>
+
+  <%- include("../includes/scripts") %> 
+</body>
+
+</html>

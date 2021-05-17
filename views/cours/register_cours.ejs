@@ -1,0 +1,58 @@
+<%- include("../includes/head")%>
+</head>
+
+<body>
+ 
+    <%- include("../includes/left_menu")%>
+
+    <div class="all-content-wrapper">
+        <%- include("../includes/logo_top") %> 
+        <div class="header-advance-area">
+            <%- include("../includes/menu_top",{user:user}) %> 
+            <!-- Mobile Menu start -->
+           <%- include("../includes/mobile_menu") %> 
+            <!-- Mobile Menu end -->
+
+            <div class="error-pagewrap">
+                <div class="error-page-int">
+                    <div class="text-center custom-login">
+                        <h3>Enregistrement des Cours</h3>
+                        <p>veuillez a bien remplir les champs</p>
+                    </div>
+                    <div class="content-error">
+                        <div class="hpanel">
+                            <div class="panel-body">
+                                <form action="/cours/postCours"  method="POST">
+                                    <div class="row">
+                                      
+                                        <div class="form-group col-lg-12">
+                                            <label>nom cours</label>
+                                            <input class="form-control" name="nom_cours" required>
+                                        </div>
+                                        
+                                        <div class="form-group col-lg-12">
+                                            <label for="">Description cours</label>
+                                            <textarea name="description" id="" cols="30" rows="10"></textarea>
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="text-center">
+                                        <button class="btn btn-success loginbtn">Enregistrer</button>
+                                        <input type="reset" class="btn btn-default"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>   
+            </div>
+        </div>
+    
+        <%- include("../includes/footer") %> 
+    </div>
+
+  <%- include("../includes/scripts") %> 
+</body>
+
+</html>

@@ -5,6 +5,8 @@ const multer = require("multer");
 const {LocalStorage}= require('node-localstorage');
 const path = require("path")
 const fs = require('fs');
+const Faculte = require("../models/faculte");
+const Immatriculation = require("../models/immatriculation");
 let code_etudiant="";
 var localStorage = new LocalStorage('./scratch');
   //Set Storage Engine for multer
@@ -179,6 +181,13 @@ const profil_etudiant = async (req,res,next)=>{
               "code_etudiant": req.params.code_etudiant
             }
           });
+
+          const faculte=await Immatriculation.findAll({include:Faculte,
+            where: {
+              "code_etudiant": req.params.code_etudiant
+            }
+          });
+          
           let infos_etudiant=null;
           if(!etudiant_infos){
             infos_etudiant={
@@ -192,7 +201,7 @@ const profil_etudiant = async (req,res,next)=>{
             }else{
               infos_etudiant=etudiant_infos;
             }
-          res.render("etudiants/profile_etudiants",{user:res.locals.user,etudiant,"etudiant_infos":infos_etudiant,etu_doc:etudiant_documents})
+          res.render("etudiants/profile_etudiants",{user:res.locals.user,etudiant,"etudiant_infos":infos_etudiant,etu_doc:etudiant_documents,faculte})
     } catch (error) {
         console.log(error);
     }

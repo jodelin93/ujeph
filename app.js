@@ -47,6 +47,10 @@ const Depense = require("./models/depenses");
 const Tydepense = require("./models/type_depense");
 const Paiement = require("./models/paiement");
 const Bourse = require("./models/bourses");
+const Cours = require("./models/cours");
+const Professeur = require("./models/professeur");
+const Catalogue = require("./models/catalogue");
+const Notes = require("./models/notes");
 
 //routes
 const user= require("./routes/users")
@@ -54,15 +58,25 @@ const faculte= require("./routes/faculte")
 const etudiant = require("./routes/etudiant");
 const immatriculation = require("./routes/immatriculation");
 const depense = require("./routes/depense");
-const paiement = require("./routes/paiement");
+const payement = require("./routes/paiement");
 const bourse = require("./routes/bourse");
+const cours = require("./routes/cours");
+const professeur = require("./routes/professeur");
+const catalogue = require("./routes/catalogue");
+const notes = require("./routes/notes");
+
+
 app.use("/user/",user);
 app.use("/faculte/",faculte);
 app.use("/etudiant/",etudiant);
 app.use("/immatriculation/",immatriculation);
 app.use("/depense/",depense);
-app.use("/paiement/",paiement);
+app.use("/payement/",payement);
 app.use("/bourse/",bourse);
+app.use("/cours/",cours);
+app.use("/professeur/",professeur);
+app.use("/catalogue/",catalogue);
+app.use("/notes/",notes);
 
 Etudiant.hasOne(Etudiant_Infos,{
   as: 'Current',
@@ -90,6 +104,28 @@ Paiement.belongsTo(Etudiant,{
 Bourse.belongsTo(Etudiant,{
   foreignKey: 'code_etudiant',
 });
+
+Catalogue.belongsTo(Cours,{
+  foreignKey:'code_cours'
+})
+Catalogue.belongsTo(Faculte,{
+  foreignKey:'code_faculte'
+})
+Catalogue.belongsTo(Professeur,{
+  foreignKey:'code_professeur'
+})
+
+Notes.belongsTo(Faculte,{
+  foreignKey:'code_faculte'
+})
+
+Notes.belongsTo(Cours,{
+  foreignKey:'code_cours'
+})
+
+Notes.belongsTo(Etudiant,{
+  foreignKey:'code_etudiant'
+})
 app.get("/",async (req,res,next)=>{
   console.log(req.flash("message"));
     res.render("utilisateurs/login",{message:req.flash("message")})

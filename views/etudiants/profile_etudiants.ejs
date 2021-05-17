@@ -22,7 +22,42 @@
                             <p class="ctn-cards">Lorem ipsum dolor sit amet, this is a consectetur adipisicing elit</p>
                             <a class="follow-cards" href="/immatriculation/register/<%= etudiant.code_etudiant %>">Immatriculer</a>
                             <a class="follow-cards" href="/paiement/register_paiement/<%= etudiant.code_etudiant %>">Facturation</a>
-                            <a class="follow-cards" href="/bourse/register/<%= etudiant.code_etudiant %>">Donner Bourses</a>
+                            <a class="follow-cards" href="/bourse/register/<%= etudiant.code_etudiant %>">Bourses</a>
+                            <h4 class="text-success" style="margin-top: 4px;">Section Notes</h4>
+                            <form action="/notes/registerNotes/<%= etudiant.code_etudiant %>" id="loginForm" method="POST">
+                                <div class="form-group">
+                                    <label class="control-label" >Faculte</label>
+                                    <select name="faculte" id="" class="form-control" required>
+                                        <% faculte.forEach(fac =>{ %> 
+                                                   
+                                            <option value="<%= fac.faculte.code_faculte %>" ><%= fac.faculte.nom_faculte %> </option>
+                                          
+                                            <% }) %>
+                                    </select>
+         
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" >Semestre</label>
+                                    <select name="semetre" id="" class="form-control" required>
+                                        <option value="" selected="" disabled="" >Selectionner Semestre</option>
+                                                    <option >I</option>
+                                                    <option >II</option>
+                                                    <option >III</option>
+                                                    <option >IV</option>
+                                                    <option >V</option>  
+                                                    <option >VI</option>
+                                                    <option >VII</option>
+                                                    <option >VIII</option>
+                                                    <option >XI</option>
+                                                    <option >X</option>  
+                                    </select>
+                                   
+                                </div>
+                               
+                                <input type="submit" class="btn btn-success btn-block loginbtn" value="Ajouter Notes" name="ajouter">
+                                <input type="submit" class="btn btn-default btn-block" value="Voir Notes" name="voir">
+                                
+                            </form>
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                     <div class="cards-dtn">
