@@ -1,6 +1,4 @@
-const Paiement= require("../models/paiement")
-const Immatriculation = require("../models/immatriculation")
-const Faculte= require("../models/faculte");
+
 const Etudiant = require("../models/etudiant");
 const Bourse = require("../models/bourses");
 
