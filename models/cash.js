@@ -1,8 +1,8 @@
 const connection = require("./database");
 const {DataTypes} = require("sequelize");
 
-const Paiement = connection.define("paiement",{
-    code_paiement:{
+const Cash = connection.define("cash",{
+    code:{
         type:DataTypes.STRING,
         primaryKey:true,
     },mode_paiement:{
@@ -35,4 +35,4 @@ const Paiement = connection.define("paiement",{
     }
 })
 
-module.exports=Paiement;
+module.exports=Cash;

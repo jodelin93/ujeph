@@ -46,6 +46,7 @@ const Immatriculation = require("./models/immatriculation")
 const Depense = require("./models/depenses");
 const Tydepense = require("./models/type_depense");
 const Paiement = require("./models/paiement");
+const Cash = require("./models/cash");
 const Bourse = require("./models/bourses");
 const Cours = require("./models/cours");
 const Professeur = require("./models/professeur");
@@ -98,6 +99,11 @@ Immatriculation.belongsTo(Etudiant,{
   foreignKey: 'code_faculte',
 });
 Paiement.belongsTo(Etudiant,{
+  foreignKey: 'code_etudiant',
+  
+});
+
+Cash.belongsTo(Etudiant,{
   foreignKey: 'code_etudiant',
   
 });

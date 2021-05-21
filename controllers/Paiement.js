@@ -31,8 +31,7 @@ const postRegister=async (req,res,next)=>{
 }
 
 const getPaiements=async (req,res,next)=>{
-    const paiement = await Payement.findAll({include:[Etudiant]});
-
+    const paiement=await  Payement.findAll({include:[Etudiant]});
     res.render("paiements/table_paiement",{paiement})
 }
 
