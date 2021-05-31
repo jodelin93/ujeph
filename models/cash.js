@@ -28,7 +28,10 @@ const Cash = connection.define("cash",{
         type:DataTypes.STRING,
         allowNull:false
     },
-    
+    date_paiement:{
+        type:DataTypes.DATE,
+        allowNull:false
+    },
     utilisateur:{
         type:DataTypes.STRING,
         allowNull:false

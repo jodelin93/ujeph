@@ -22,7 +22,7 @@ const postRegister=async (req,res,next)=>{
        const rand2= Number.parseInt(Math.random()*100);
        code_paiement = `${rand1}${nombre_paiement}${rand2}`;
        const user=`${req.session.passport.user.nom_user} ${req.session.passport.user.prenom_user}`;
-       console.log(user);
+      
     const paiement_objetct={
         ...req.body,code:code_paiement,utilisateur:user
     }

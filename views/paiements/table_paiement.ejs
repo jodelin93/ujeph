@@ -46,7 +46,7 @@
             <td><%= element.objet_paiement %></td>
             <td><%= element.nom_faculte %></td>
             <td><%= element.annee_academique %></td>
-            <td><%= element.createdAt.toLocaleString() %></td>
+            <td><%= element.date_paiement.toDateString() %></td>
             <td><%= element.utilisateur %></td>
            
             <td><a href="/depense/edit_depense/<%= element.code_depense %>"><i class="fa fa-edit"> Modifier </i></a></td>
