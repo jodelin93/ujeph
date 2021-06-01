@@ -1,4 +1,4 @@
-const Cash= require("../models/cash")
+const Payement= require("../models/paiement")
 const Immatriculation = require("../models/immatriculation")
 const Faculte= require("../models/faculte");
 const Etudiant = require("../models/etudiant");
@@ -16,7 +16,7 @@ const registerPaiment=async (req,res,next)=>{
 }
 
 const postRegister=async (req,res,next)=>{
-    const paiement = await Cash.findAndCountAll();
+    const paiement = await Payement.findAndCountAll();
     const nombre_paiement=paiement.count
        const rand1= Number.parseInt(Math.random()*100);
        const rand2= Number.parseInt(Math.random()*100);
@@ -24,15 +24,14 @@ const postRegister=async (req,res,next)=>{
        const user=`${req.session.passport.user.nom_user} ${req.session.passport.user.prenom_user}`;
       
     const paiement_objetct={
-        ...req.body,code:code_paiement,utilisateur:user
+        ...req.body,code_paiement:code_paiement,utilisateur:user
     }
     
-    await Cash.create(paiement_objetct);
-    res.redirect("/paiement/getPayement");
+    await Payement.create(paiement_objetct);
 }
 
 const getPaiements=async (req,res,next)=>{
-    const paiement=await  Cash.findAll({include:[Etudiant]});
+    const paiement=await  Payement.findAll({include:[Etudiant]});
     res.render("paiements/table_paiement",{paiement})
 }
 

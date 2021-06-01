@@ -37,7 +37,7 @@
     <tbody>
         <% paiement.forEach(element =>{ %> 
         <tr>
-            <td><%= element.code %></td>
+            <td><%= element.code_paiement %></td>
             <td><a href="/etudiant/profil_etudiant/<%= element.code_etudiant %>"><%= element.code_etudiant %></a></td>
             <td class="hidden"><%= element.etudiant.nom_etudiant %></td>
             <td class="hidden"><%= element.etudiant.prenom_etudiant %></td>
