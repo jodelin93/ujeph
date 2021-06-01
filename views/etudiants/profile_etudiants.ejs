@@ -21,7 +21,7 @@
                             <h4>code : <%= etudiant.code_etudiant %> </h4>
                             <p class="ctn-cards">Lorem ipsum dolor sit amet, this is a consectetur adipisicing elit</p>
                             <a class="follow-cards" href="/immatriculation/register/<%= etudiant.code_etudiant %>">Immatriculer</a>
-                            <a class="follow-cards" href="/paiement/register_paiement/<%= etudiant.code_etudiant %>">Facturation</a>
+                            <a class="follow-cards" href="/payement/register_paiement/<%= etudiant.code_etudiant %>">Facturation</a>
                             <a class="follow-cards" href="/bourse/register/<%= etudiant.code_etudiant %>">Bourses</a>
                             <h4 class="text-success" style="margin-top: 4px;">Section Notes</h4>
                             <form action="/notes/registerNotes/<%= etudiant.code_etudiant %>" id="loginForm" method="POST">
