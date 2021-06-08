@@ -27,21 +27,22 @@
                                     <input type="hidden" name="code_faculte" value="<%= code_faculte %>">
                                     <input type="hidden" name="semestre" value="<%=semestre %>">
                                     <div class="row">
-                                     
+                                        <div class="form-group col-lg-12">
+                                            <select  class="form-control" name="code_cours" required>
+                                                <option value="" disabled="disabled" selected>Selectionner Cours</option>
                                         <% cours.forEach((element,index) =>{ %>
 
-                                        <div class="form-group col-lg-12">
-                                            <label><%= element.cour.nom_cours %> </label>
-                                            
-                                            <input type="text"  class="form-control" name="notes"step="any" required>
-                                            
-                                            <input type="hidden" name="code_cours" value="<%= element.cour.code_cours %>">
-                                        </div>
-                                        <% }) %>
-                                    </div>
+                                        <option value="<%= element.cour.code_cours %>"   ><%= element.cour.nom_cours %></option>
+                                        <% }) %> 
+                                       
+                                       
+                                    </select>
+                                    <input  required type="number" placeholder="Entrer notes" class="form-control" name="note"step="any" required>
+                                </div>
                                     <div class="text-center">
-                                        <input type="submit" class="btn btn-primary" name="enregistrer" value="Enregistrer"/>
+                                        <input type="submit" class="btn btn-primary" name="enregistrerUne" value="Enregistrer"/>
                                         <input type="reset" class="btn btn-default"/>
+                                        
                                     </div>
                                 </form>
                             </div>
