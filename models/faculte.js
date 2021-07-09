@@ -14,6 +14,10 @@ const Faculte = connection.define("faculte",{
         type:DataTypes.STRING,
         allowNull:false
     }
+    ,note_passage:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+    }
 })
 
 module.exports=Faculte;

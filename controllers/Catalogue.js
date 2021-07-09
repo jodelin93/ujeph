@@ -15,6 +15,55 @@ const register=async  (req,res,next)=>{
     }
    
 }
+
+const editCatalogue=async  (req,res,next)=>{
+    try {
+        const faculte= await Faculte.aggregate( 'nom_faculte', 'DISTINCT', { plain: false });
+        const professeur= await Professeur.findAll();
+        const code_cours= req.params.code_cours;
+        const code_catalogue=req.params.code_catalogue;
+        const catalogue= await Catalogue.findOne({ include:[Faculte,Professeur],
+            where: {
+              "code": code_catalogue,
+            }
+          });
+          console.log(catalogue);
+        res.render("catalogue/modifier",{user:res.locals.user,faculte,code_cours,professeur,code_catalogue,catalogue});
+    } catch (error) {
+       console.log(error); 
+    }
+   
+}
+const postEditCatalogue=async  (req,res,next)=>{
+    const faculte= await Faculte.findOne({
+        where: {
+          "nom_faculte": req.body.faculte,
+          "degre_faculte": req.body.degre,
+        }
+      });
+    try {
+        const code=req.body.code;
+        const data_catalogue={
+            code_cours:req.body.code_cours,
+            code_faculte:faculte.code_faculte,
+            code_professeur:req.body.professeur,
+            semestre:req.body.semestre,
+            status:1
+        }
+      const modifCatalogue= await Catalogue.update(data_catalogue,{
+          where:{
+              "code":code
+          }
+      })
+      res.redirect("/catalogue/getCatalogues");
+       
+        //res.render("catalogue/modifier",{user:res.locals.user,faculte,code_cours,professeur,code_catalogue});
+    } catch (error) {
+       console.log(error); 
+    }
+   
+}
+
 const getCatalogues=async  (req,res,next)=>{
     try {
        
@@ -56,5 +105,7 @@ const postCatalogue=async  (req,res,next)=>{
 module.exports={
     register,
     postCatalogue,
-    getCatalogues
+    getCatalogues,
+    editCatalogue,
+    postEditCatalogue
 }

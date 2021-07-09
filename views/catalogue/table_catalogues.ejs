@@ -35,8 +35,8 @@
             <td><%= element.faculte.degre_faculte %></td>
             <td><%= element.professeur.nom_professeur %> <%= element.professeur.prenom_professeur %></td>
            
-            <td><a href="#"><i class="fa fa-edit"> Modifier </i></a>
-                <a href="/catalogue/register/<%= element.code_cours %>"><i class="fa fa-filter"> Attribuer </i></a></td>
+            <td><a href="/catalogue/editCatalogues/<%= element.code %>/<%= element.code_cours %>"><i class="fa fa-edit"> Modifier </i></a>
+               
         </tr>
         <% }) %>
     </tbody>

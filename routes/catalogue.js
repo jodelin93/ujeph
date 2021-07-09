@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/register/:code_cours",auth,Catalogue.register);
 router.post("/postCatalogue",auth,Catalogue.postCatalogue);
 router.get("/getCatalogues",auth,Catalogue.getCatalogues);
-
-
+router.get("/editCatalogues/:code_catalogue/:code_cours",auth,Catalogue.editCatalogue);
+router.post("/postEditCatalogue",auth,Catalogue.postEditCatalogue);
 
 module.exports= router;
