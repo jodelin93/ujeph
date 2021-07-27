@@ -101,64 +101,34 @@ const registerNotes =async (req,res,next)=>{
                 doc.image('public/bulletin/bulletin.JPG', 0,15,{width:600});
                 doc.image('public/bulletin/bulletin2.JPG', 0,700,{width:600});
                 doc.moveDown(6.5);
-                doc.fontSize(16). text(`Bulletin `.toUpperCase(),{align:"center",oblique:true}).font('Helvetica');
-                doc.fontSize(14). text(` Semestre ${semestre} Annee Academique ${annee.annee}`,{align:"center",oblique:true}).font('Helvetica');
+                doc.fontSize(16). text(`Bulletin Semeste ${semestre} Annee Academique ${annee.annee}`,{align:"center",oblique:true}).font('Helvetica');
                 doc.moveDown(1);
-                doc.fontSize(12).text(`Code :`,150,210);
-                doc.font('Helvetica-Bold');
-                doc.fontSize(12).text(`${code_etudiant}`,300,210);
-                doc.font('Helvetica');
-                doc.text(`Nom de l'etudiant(e):`,150,225);
-                doc.font('Helvetica-Bold');
-                doc.text(`${etud.nom_etudiant.toUpperCase()} ${etud.prenom_etudiant.toUpperCase()}`,300,225);
-                doc.font('Helvetica');
-                doc.text(`Niveau :`,150,240);
-                doc.font('Helvetica-Bold');
-                doc.text(`${labelannee}`,300,240);
-                doc.font('Helvetica');
-                doc.text(`Faculte :`,150,255);
-                doc.font('Helvetica-Bold');
-                doc.text(`${fac.nom_faculte}`,300,255);
+                doc.fontSize(12).text(`Code                    ${code_etudiant}`);
+                doc.text(`Nom complet       ${etud.nom_etudiant.toUpperCase()} ${etud.prenom_etudiant.toUpperCase()}`);
+                doc.text(`Niveau                 ${labelannee}`);
+                doc.text(`Faculte                ${fac.nom_faculte}`);
                 
                 doc.moveDown(2);
-
+                doc.font("Helvetica-Bold").fontSize(12). text(`Note                                                                        Nom Cours`.toUpperCase()).font('Helvetica-Bold');
+              
                 var total=0;
                 var count=0;
                 const color1="red";
                 const color2="black";
-                var x_gap=280;
-                var note_gap=310;
-                var rectangle_index=293;
-               
-                doc.text("  #",60,280).font('Helvetica-Bold')
-                doc.rect(60,277,20,15)
-                doc.rect(60,277,385,15)
-                doc.rect(60,277,450,15)
-                doc.text("nom cours".toUpperCase(),90,280).font('Helvetica-Bold')
-                doc.text("notes".toUpperCase(),450,280).font('Helvetica-Bold')
-                doc.font('Helvetica');
-                notes.forEach(note=>{
+                
 
+                notes.forEach(note=>{
                     total=total+Number.parseInt(note.note);
                     count++;
-                    x_gap+=20;
-                    doc.rect(60,rectangle_index,20,18).stroke();
-                    doc.rect(60,rectangle_index,385,18).stroke();
-                    doc.rect(445,rectangle_index,65,18).stroke();
-                    doc. text(` ${count}`,60,x_gap,{oblique:true,align:"justify",fill:true})
-                    doc. text(` ${note.cour.nom_cours}`,90,x_gap,{oblique:true,align:"justify",fill:true})
-                    if(note.note<note.faculte.note_passage){
-                    doc.fillColor("red").text(` ${note.note}`,450,x_gap,{oblique:true,align:"justify",fill:true})
-                    doc.fillColor("black");
+                  if(note.note<note.faculte.note_passage){
+                    doc.fontSize(10).fillColor(`${color1}`). text(`${note.note} ________________________________________________  ${note.cour.nom_cours}`,{oblique:true,align:"justify",fill:true}).font('Helvetica-Bold'); 
+                    doc.fillColor(`${color2}`)
                 }else{
-                    doc. text(` ${note.note}`,450,x_gap,{oblique:true,align:"justify",fill:true})
+
+                
+                    doc.fontSize(10). text(`${note.note} ________________________________________________  ${note.cour.nom_cours}`,{oblique:true,align:"justify"}).font('Helvetica-Bold');
                 }
-               // doc.text("---------------------------------------------------------------------------------------------------------------",60,note_gap)
-                note_gap+=20;
-                rectangle_index+=20;
-                 
                 })
-                doc.rect(50,200,500,440).lineWidth(3).stroke();
                 doc.fontSize(14).fillColor("green").text(`Total:    ${total}.00`.toUpperCase(),400,650,{align:"right"} );
                 doc.fontSize(14).fillColor("green").text(`Moyenne:  ${total/count}`.toUpperCase(),400,670,{align:"right"});
 
