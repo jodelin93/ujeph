@@ -20,6 +20,7 @@ const postFaculte = async (req,res,next)=>{
             res.redirect("register_faculte");
         }
     } catch (error) {
+        console.log(error);
         res.redirect("register_faculte");
     }
 

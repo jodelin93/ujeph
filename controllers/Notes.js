@@ -15,6 +15,9 @@ const registerNotes =async (req,res,next)=>{
     const code_etudiant=req.params.code_etudiant;
     const semestre=req.body.semetre;
     const code_faculte=req.body.faculte
+    console.log(code_etudiant);
+    console.log(semestre);
+    console.log(code_faculte);
         try {
             const cours = await Catalogue.findAll({include:Cours,
                 where: {
@@ -63,7 +66,7 @@ const registerNotes =async (req,res,next)=>{
                 }
                 const annee= await Immatriculation.findOne({ where: {
                     "code_etudiant":code_etudiant ,
-                    "niveau": semestre,
+                    "niveau": niveau,
                     
                   }})
                 const fac= await Faculte.findOne({ where: {
