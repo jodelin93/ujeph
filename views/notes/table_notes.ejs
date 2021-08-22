@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
 <link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/modals.css">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 </head>
@@ -33,8 +34,32 @@
             <td><%= element.semestre %></td>
             <td><%= element.note %></td>
            
-            <td><a href="/notes/edit_note/<%= element.code %>"><i class="fa fa-edit"> Modifier </i></a></td>
+            <td><a href="/notes/edit_note/<%= element.code %>"><i class="fa fa-edit"> Modifier </i></a>
+                <a href="#" data-toggle="modal" data-target="#<%= element.code%>"><i class="fa fa-trash"> Supprimer </i></a>
+       </td>
         </tr>
+        <div id="<%= element.code%>" class="modal modal-edu-general FullColor-popup-DangerModal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                   
+                      
+                        <div class="modal-close-area modal-close-df">
+                            <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                        </div>
+          
+                    <div class="modal-body">
+                        <i class="educate-icon educate-danger modal-check-pro information-icon-pro"></i>
+                        <p>Voulez-vous vraiment Supprimer</p>
+                        <h2><%= element.cour.nom_cours %>
+                     
+                    </div>
+                    <div class="modal-footer footer-modal-admin">
+                        <a data-dismiss="modal" href="#">Cancel</a>
+                        <a class="bg-danger" href="/notes/delete_note/<%= element.code %>">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <% }) %>
     </tbody>
     <tfoot>
@@ -81,8 +106,9 @@ $('#example').DataTable( {
 } );
 
 
-</script>
 
+</script>
+<script src="/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -91,7 +117,18 @@ $('#example').DataTable( {
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
 
-
+  <!-- jquery
+		============================================ -->
+     
+        <!-- bootstrap JS
+            ============================================ -->
+        <script src="/js/bootstrap.min.js"></script>
+        <!-- wow JS
+            ============================================ -->
+        
+       
+        
+   
 
 </body>
 </html>

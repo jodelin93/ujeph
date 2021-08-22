@@ -91,27 +91,27 @@ const registerNotes =async (req,res,next)=>{
                 var doc = new PdfDocument();
                 var labelannee=null;
                 if(niveau==="I"){
-                    labelannee="Premiere Annee";
+                    labelannee="Première Année";
                 }else if(niveau==="II"){
-                    labelannee="Deuxieme Annee";
+                    labelannee="Deuxième Année";
                 }else if(niveau==="III"){
-                    labelannee="Troisieme Annee";
+                    labelannee="Troisième Année";
                 }else if(niveau==="IV"){
-                    labelannee="Quatrieme Annee";
+                    labelannee="Quatrième Année";
                 }else if(niveau==="V"){
-                    labelannee="Cinquieme Annee";
+                    labelannee="Cinquième Année";
                 }
                 doc.image('public/bulletin/bulletin.JPG', 0,15,{width:600});
                 doc.image('public/bulletin/bulletin2.JPG', 0,700,{width:600});
                 doc.moveDown(6.5);
                 doc.fontSize(16). text(`Bulletin `.toUpperCase(),{align:"center",oblique:true}).font('Helvetica');
-                doc.fontSize(14). text(` Semestre ${semestre} Annee Academique ${annee.annee}`,{align:"center",oblique:true}).font('Helvetica');
+                doc.fontSize(14). text(` Semestre ${semestre} Année Académique ${annee.annee}`,{align:"center",oblique:true}).font('Helvetica');
                 doc.moveDown(1);
                 doc.fontSize(12).text(`Code :`,150,210);
                 doc.font('Helvetica-Bold');
                 doc.fontSize(12).text(`${code_etudiant}`,300,210);
                 doc.font('Helvetica');
-                doc.text(`Nom de l'etudiant(e):`,150,225);
+                doc.text(`Nom de l'étudiant(e):`,150,225);
                 doc.font('Helvetica-Bold');
                 doc.text(`${etud.nom_etudiant.toUpperCase()} ${etud.prenom_etudiant.toUpperCase()}`,300,225);
                 doc.font('Helvetica');
@@ -162,8 +162,8 @@ const registerNotes =async (req,res,next)=>{
                  
                 })
                 doc.rect(50,200,500,440).lineWidth(3).stroke();
-                doc.fontSize(14).fillColor("green").text(`Total:    ${total}.00`.toUpperCase(),400,650,{align:"right"} );
-                doc.fontSize(14).fillColor("green").text(`Moyenne:  ${total/count}`.toUpperCase(),400,670,{align:"right"});
+                doc.fontSize(14).fillColor("green").text(`Total:    ${total.toFixed(2)}`.toUpperCase(),400,650,{align:"right"} );
+                doc.fontSize(14).fillColor("green").text(`Moyenne:  ${(total/count).toFixed(2)}`.toUpperCase(),400,670,{align:"right"});
 
                 
                   doc.pipe(res);
@@ -232,6 +232,16 @@ const editNotes=async (req,res,next)=>{
    res.render("notes/modifier_note",{user:res.locals.user,code_note});
 }
 
+const deleteNotes=async (req,res,next)=>{
+    const code_note=Number.parseInt(req.params.code_note);
+        await Notes.destroy({
+            where: {
+              "code": code_note
+            }
+          })
+     res.redirect("/etudiant/table_etudiants");
+  }
+
 const postEditNotes=async (req,res,next)=>{
     const data_note={
         "note":req.body.note
@@ -244,7 +254,8 @@ module.exports={
     registerNotes,
     postNotes,
     editNotes,
-    postEditNotes
+    postEditNotes,
+    deleteNotes
     
    
 }
